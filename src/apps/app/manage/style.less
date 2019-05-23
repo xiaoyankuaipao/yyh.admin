@@ -83,3 +83,31 @@ header {
     }
   }
 }
+
+//内容
+.content{
+  display: flex;
+  height: calc(~"100% - 93px");
+  .navigation{
+    display: flex;
+    transition: width 0.5s;
+    background-color: @header-background-color;
+
+    &.collapsed{
+      width: 17px;
+      .el-menu{
+        width: 0;
+        overflow: hidden;
+      }
+    }
+    .el-menu{
+      width:100%;
+      transition: all 0.3s;
+      overflow:auto;
+     
+      .el-menu-item{
+        color: #fff;
+      }
+    }
+  }
+}
