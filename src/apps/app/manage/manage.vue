@@ -62,10 +62,12 @@
                         <i class="el-icon-setting"></i>
                         <span slot="title">导航三</span>
                     </el-menu-item>
-                    </el-menu>
+                </el-menu>
+                
+                
                 <!-- 收缩按钮 -->
-                <div>
-
+                <div class="shrink">
+                    <a href="javacript:;" class="collapseBtn" @click="onCollapse"></a>
                 </div>
             </div>
             <!-- 页面内容 -->
@@ -98,6 +100,11 @@ export default {
     methods:{
         mainMenuClick(index){
             alert(this.mainMenus[index]);
+        },
+        onCollapse(){
+            this.menuCollapsed=!this.menuCollapsed;
+            /*触发window的resize事件*/
+			setTimeout('window.$ && window.$(window).trigger("resize")', 500)
         }
     }
 }
