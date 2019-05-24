@@ -1,5 +1,6 @@
 <template>
-    <div class="fillcontain">
+    <div class="fillcontain" >
+        <!-- 头部 -->
         <header>
             <el-row>
                 <el-col :span="8">
@@ -19,79 +20,165 @@
                 </el-col>
             </el-row>
         </header>
-
+        <!-- 进度条 -->
         <div class="progress">
             <div :class="getProgressClass"></div>
         </div>
-
+        <!-- 内容 -->
         <div class="content">
             <!-- 导航 -->
             <div :class="{'el-col':true,'el-col-4':true,'navigation':true,'collapsed':menuCollapsed}">
                 <!-- 菜单 -->
-                 <el-menu
-                    default-active="2"
-                    class="el-menu-vertical-demo"
-                    @open="handleOpen"
-                    @close="handleClose"
-                    background-color="#324157"
-                    text-color="#fff"
-                    active-text-color="#ffd04b">
-                    <el-submenu index="1">
-                        <template slot="title">
-                        <i class="el-icon-location"></i>
-                        <span>导航一</span>
-                        </template>
-                        <el-menu-item-group>
-                        <template slot="title">分组一</template>
-                        <el-menu-item index="1-1">选项1</el-menu-item>
-                        <el-menu-item index="1-2">选项2</el-menu-item>
-                        </el-menu-item-group>
-                        <el-menu-item-group title="分组2">
-                        <el-menu-item index="1-3">选项3</el-menu-item>
-                        </el-menu-item-group>
-                        <el-submenu index="1-4">
-                        <template slot="title">选项4</template>
-                        <el-menu-item index="1-4-1">选项1</el-menu-item>
-                        </el-submenu>
-                    </el-submenu>
-                    <el-menu-item index="2">
-                        <i class="el-icon-menu"></i>
-                        <span slot="title">导航二</span>
-                    </el-menu-item>
-                    <el-menu-item index="3">
-                        <i class="el-icon-setting"></i>
-                        <span slot="title">导航三</span>
-                    </el-menu-item>
-                </el-menu>
-                
-                
+                <y-menu :default-active="defaultActive" :data="subMenus"></y-menu>
                 <!-- 收缩按钮 -->
                 <div class="shrink">
-                    <a href="javacript:;" class="collapseBtn" @click="onCollapse"></a>
+                    <a href="javacript:;" class="collapseBtn" @click="onCollapse">
+                        <i :class="{'el-icon-d-arrow-left': !menuCollapsed,'el-icon-d-arrow-right': menuCollapsed }"></i>
+                    </a>
                 </div>
             </div>
             <!-- 页面内容 -->
-            <div>
-
+            <div :class="{'el-col':true,'el-col-20':!menuCollapsed,'el-col-24':menuCollapsed}">
+                <head-top></head-top>
+                <div class="manage-body">
+                    <keep-alive>
+                        <transition name="el-zoom-in-top" mode="out-in">
+                            <router-view></router-view>
+                        </transition>
+                    </keep-alive>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import headTop from '../../components/headTop'
 export default {
+    components:{
+        headTop
+    },
     data(){
         return{
             mainMenus:['菜单一','菜单二','菜单三','菜单四'],
             hasPermission:false,
             startLoading:false,
-            menuCollapsed:false
+            menuCollapsed:false,
+            /*子菜单，左侧*/
+            subMenus: [
+                {
+                "id": 1,
+                "name": "首页",
+                "code": null,
+                "address": "/",
+                "icon": "el-icon-menu",
+                "menuType": 2,
+                "parentId": null,
+                "children": []
+                },
+                {
+                "id": 2,
+                "name": "数据管理",
+                "code": null,
+                "address": null,
+                "icon": "el-icon-document",
+                "menuType": 1,
+                "parentId": null,
+                "children": [
+                    {
+                    "id": 3,
+                    "name": "用户列表（demo）",
+                    "code": null,
+                    "address": "/userListDemo",
+                    "icon": null,
+                    "menuType": 2,
+                    "parentId": 2,
+                    "children": []
+                    },
+                    {
+                    "id": 4,
+                    "name": "商户列表（demo）",
+                    "code": null,
+                    "address": "/shopList",
+                    "icon": null,
+                    "menuType": 2,
+                    "parentId": 2,
+                    "children": []
+                    }
+                ]
+                },
+                {
+                "id": 5,
+                "name": "系统管理",
+                "code": null,
+                "address": null,
+                "icon": "el-icon-setting",
+                "menuType": 1,
+                "parentId": null,
+                "children": [
+                    {
+                    "id": 6,
+                    "name": "角色管理",
+                    "code": null,
+                    "address": "/roleList",
+                    "icon": null,
+                    "menuType": 2,
+                    "parentId": 5,
+                    "children": []
+                    },
+                    {
+                    "id": 7,
+                    "name": "菜单管理",
+                    "code": null,
+                    "address": "/menuList",
+                    "icon": null,
+                    "menuType": 2,
+                    "parentId": 5,
+                    "children": []
+                    },
+                    {
+                    "id": 8,
+                    "name": "用户管理",
+                    "code": null,
+                    "address": "/userList",
+                    "icon": null,
+                    "menuType": 2,
+                    "parentId": 5,
+                    "children": []
+                    }
+                ]
+                },
+                {
+                "id": 9,
+                "name": "我的家",
+                "code": null,
+                "address": null,
+                "icon": "el-icon-printer",
+                "menuType": 1,
+                "parentId": null,
+                "children": [
+                    {
+                    "id": 10,
+                    "name": "小公主",
+                    "code": null,
+                    "address": "/myLittlePrincess",
+                    "icon": null,
+                    "menuType": 2,
+                    "parentId": 9,
+                    "children": []
+                    }
+                ]
+                }
+            ],
         }
     },
     computed:{
         getProgressClass(){
             return {value:true,loading:this.startLoading,complete:!this.startLoading && this.hasPermission}
-        }
+        },
+        defaultActive: function() {
+           return this.$route.path;
+        },
     },
     mounted(){
         setTimeout(()=>{this.startLoading=true},0);/* setTimeout() 方法用于在指定的毫秒数后调用函数或计算表达式。*/

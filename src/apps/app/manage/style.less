@@ -25,13 +25,6 @@ header {
     font-size: 20px;
     
   }
-  /* 防止标题超出后影响其它内容 */
-//   .el-col {
-//     width: auto;
-//     height: 90px;
-//     min-width: 16.66667%;
-//   }
-
   /*头部菜单*/
   nav{
       display: block;
@@ -88,16 +81,22 @@ header {
 .content{
   display: flex;
   height: calc(~"100% - 93px");
+  &>.el-menu{
+    height: 100%;
+    overflow: auto;
+  }
   .navigation{
     display: flex;
     transition: width 0.5s;
-    background-color: @header-background-color;
+    background-color: #324157;
+    /*收缩*/
     .shrink{
       width: 16px;
       border: 1px solid #1f2d3d;
       border-top: 0;
       border-bottom: 0;
       overflow: hidden;
+      /*收缩按钮*/
       .collapseBtn{
         display: inline-block;
         width: 100%;
@@ -113,20 +112,38 @@ header {
       }
     }
     &.collapsed{
-      width: 17px;
+      width: 16px;
       .el-menu{
         width: 0;
         overflow: hidden;
       }
+      .aaa{
+        width: 0;
+        overflow: hidden;
+      }
     }
+    /*菜单*/
     .el-menu{
-      width:100%;
+      //width:100%;
+      width:calc(~"100% - 16px");
       transition: all 0.3s;
       overflow:auto;
-     
+      border-right: none;
       .el-menu-item{
         color: #fff;
       }
     }
+    i.iconfont{
+      font-size: 14px;
+      margin-right: 10px;
+    }
+    .aaa{
+      width: 100%;
+    }
+  }
+  .manage-body{
+    width: 100%;
+    height: calc(~"100% - 60px");
+    //height: 100%;
   }
 }
