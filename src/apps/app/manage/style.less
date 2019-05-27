@@ -2,17 +2,16 @@
 @header-background-color: rgb(50, 64, 86);
 //标题栏
 header {
-  display: block;
+  display: block;//display设置元素类型 常用值：none:此元素不会被显示，block： 块级元素，inline：行内元素，inline-block：行内块元素
   width: 100%;
   height: @header-height;
   background-color: @header-background-color;
   /*logo*/
   .logo {
-    float: left;
+    float: left;//float属性实现元素浮动，可以让块级元素脱离常规文档流，向左或向右移动，在同一行显示，如果一行显示不下，则会换行
     width: 68px;
     height: 68px;
-    //position: relative;
-    margin-top: 11px;
+    margin-top: 11px;//margin:外边距
     margin-left: 15px;
   }
   /*系统名称*/
@@ -20,10 +19,8 @@ header {
     color: #fff;
     float: left;
     margin-top: 35px;
-    //line-height: 80px;
     margin-left: 5px;
     font-size: 20px;
-    
   }
   /*头部菜单*/
   nav{
@@ -35,7 +32,7 @@ header {
       list-style: none;
       display: inline-block;
       padding-left: 0;
-      vertical-align: middle;
+      vertical-align: middle;//vertical-align 属性设置元素的垂直对齐方式
       margin-top:30px;
   }
   li{
@@ -67,7 +64,7 @@ header {
     width: 0;
     height: 3px;
     background-color: #21a1ff;
-    transition: width 4s;
+    transition: width 4s;//设置过渡效果
     &.loading {
       width: 80%;
     }
@@ -79,7 +76,7 @@ header {
 
 //内容
 .content{
-  display: flex;
+  display: flex;//弹性布局，设置为flex布局之后，子元素的float、clear、vertical-align属性将失效
   height: calc(~"100% - 93px");
   &>.el-menu{
     height: 100%;
@@ -95,13 +92,13 @@ header {
       border: 1px solid #1f2d3d;
       border-top: 0;
       border-bottom: 0;
-      overflow: hidden;
+      overflow: hidden;//overflow 属性规定当内容溢出元素框时发生的事情，visible:内容会呈现在元素框之外，hidden：超出部分不可见，scroll：显示滚动条，auto：自动，inherit：规定应该从父元素继承overflow属性
       /*收缩按钮*/
       .collapseBtn{
         display: inline-block;
         width: 100%;
         height: 100%;
-        position: relative;
+        position: relative;//position 定位方式，relative：相对定位 相对于元素原来的位置进行的定位，absolute：绝对定位 相对于第一个非static定位的父元素的定位，fixed：固定定位 相对于浏览器窗口进行定位
       }
       i{
         position: absolute;
@@ -124,7 +121,6 @@ header {
     }
     /*菜单*/
     .el-menu{
-      //width:100%;
       width:calc(~"100% - 16px");
       transition: all 0.3s;
       overflow:auto;
@@ -144,6 +140,5 @@ header {
   .manage-body{
     width: 100%;
     height: calc(~"100% - 60px");
-    //height: 100%;
   }
 }
