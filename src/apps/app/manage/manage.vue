@@ -6,7 +6,7 @@
                 <el-col :span="8">
                     <img class="logo" src="./img/logo.png" alt=""><h1 style="float:left;">XXXX后台管理系统</h1>
                 </el-col>
-                <el-col :span="12">
+                <el-col :span="14">
                     <nav>
                         <ul class="nav-list">
                             <li  v-for="(value,index) in mainMenus" :key="index" @click="mainMenuClick(index)">
@@ -15,7 +15,7 @@
                         </ul>
                     </nav>
                 </el-col>
-                <el-col :span="4">
+                <el-col :span="2">
                     <img src="./img/user.png" style="width:50px;height:50px;margin-top:20px;margin-right:20px;float:right;">
                 </el-col>
             </el-row>
