@@ -1,6 +1,5 @@
 <template>
-    <div class="login_page fillcontain"> 
-        <i class="iconfont icon-account"></i>
+    <div class="login_page fillcontain">
         <transition name="form-fade" mode="in-out" >
             <section class="form_container"  v-show="showLogin">
                 <div class="logo">
