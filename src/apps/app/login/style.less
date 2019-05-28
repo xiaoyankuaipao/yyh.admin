@@ -1,0 +1,85 @@
+@import '../../../style/mixin';
+.login_page{
+    background:url('./img/login.png') no-repeat;
+    background-size: cover;//把背景图像扩展至足够大，以使背景图像完全覆盖背景区域。背景图像的某些部分也许无法显示在背景定位区域中。
+    background-position: center;//属性设置背景图像的起始位置
+    
+    .form_container{
+        //background-color: pink;
+        .wh(1060px,500px);
+        .ctp(1060px,500px);
+        overflow: hidden;
+        text-align: center;
+        .logo{
+            margin: auto;
+            margin-top: 60px;
+            //background-color: red;
+            text-align: center;
+            display: table;
+            img{
+                display: table-cell;
+                vertical-align: middle;
+            }
+            span{
+                font-size: 40px;
+                color: #07ccef;
+                text-align: center;
+                display: table-cell;
+                vertical-align: middle;
+            }
+        }
+    }
+    .login_form{
+        background-color:#324056;
+        .wh(400px,200px);//mixin
+        .ctp(400px,200px);//mixin
+        padding: 35px 45px;
+        border-radius: 5px;
+        opacity: 0.9;
+        //margin-top:0px;
+        margin-left:-245px;
+        .submit_btn{
+            width: 100%;
+            font-size: 16px;
+            background-color: #1aa2ff;
+            border: 1px solid #1aa2ff;
+            color: #ffffff;
+        }
+    }
+
+    /*动画效果*/
+    .form-fade-enter-active, .form-fade-leave-active {
+        transition: all 0.8s;
+    }
+    .form-fade-enter, .form-fade-leave-active {
+        transform: translate3d(0, -50px, 0);
+        opacity: 0;
+    }
+    .focus{
+        color:#1aa2ff;
+    } 
+    
+    /*更改element原有的样式*/
+    input{
+        background:#202d3d ;
+        border-color:#202d3d ;
+        color:#c3c3c3 ;
+    }
+
+    .el-form-item__error{
+        color:#e04f78;
+        padding-top:8px;
+    }
+    .el-form-item{
+        margin-bottom: 30px;
+    }
+    .el-input__icon{
+        left:0;
+    }
+    .el-input__icon + .el-input__inner{
+        padding-left:40px;
+    }
+    .el-form-item.is-error .el-input__inner{
+        border-color:#e04f78;
+    }
+}

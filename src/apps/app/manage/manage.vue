@@ -67,107 +67,107 @@ export default {
             /*子菜单，左侧*/
             subMenus: [
                 {
-                "id": 1,
-                "name": "首页",
-                "code": null,
-                "address": "/",
-                "icon": "el-icon-menu",
-                "menuType": 2,
-                "parentId": null,
-                "children": []
+                    "id": 1,
+                    "name": "首页",
+                    "code": null,
+                    "address": "/manage",
+                    "icon": "el-icon-menu",
+                    "menuType": 2,
+                    "parentId": null,
+                    "children": []
                 },
                 {
-                "id": 2,
-                "name": "数据管理",
-                "code": null,
-                "address": null,
-                "icon": "el-icon-document",
-                "menuType": 1,
-                "parentId": null,
-                "children": [
-                    {
-                    "id": 3,
-                    "name": "用户列表（demo）",
+                    "id": 2,
+                    "name": "数据管理",
                     "code": null,
-                    "address": "/userListDemo",
-                    "icon": null,
-                    "menuType": 2,
-                    "parentId": 2,
-                    "children": []
-                    },
-                    {
-                    "id": 4,
-                    "name": "商户列表（demo）",
-                    "code": null,
-                    "address": "/shopList",
-                    "icon": null,
-                    "menuType": 2,
-                    "parentId": 2,
-                    "children": []
-                    }
-                ]
+                    "address": null,
+                    "icon": "el-icon-document",
+                    "menuType": 1,
+                    "parentId": null,
+                    "children": [
+                        {
+                        "id": 3,
+                        "name": "用户列表（demo）",
+                        "code": null,
+                        "address": "/userListDemo",
+                        "icon": null,
+                        "menuType": 2,
+                        "parentId": 2,
+                        "children": []
+                        },
+                        {
+                        "id": 4,
+                        "name": "商户列表（demo）",
+                        "code": null,
+                        "address": "/shopList",
+                        "icon": null,
+                        "menuType": 2,
+                        "parentId": 2,
+                        "children": []
+                        }
+                    ]
                 },
                 {
-                "id": 5,
-                "name": "系统管理",
-                "code": null,
-                "address": null,
-                "icon": "el-icon-setting",
-                "menuType": 1,
-                "parentId": null,
-                "children": [
-                    {
-                    "id": 6,
-                    "name": "角色管理",
+                    "id": 5,
+                    "name": "系统管理",
                     "code": null,
-                    "address": "/roleList",
-                    "icon": null,
-                    "menuType": 2,
-                    "parentId": 5,
-                    "children": []
-                    },
-                    {
-                    "id": 7,
-                    "name": "菜单管理",
-                    "code": null,
-                    "address": "/menuList",
-                    "icon": null,
-                    "menuType": 2,
-                    "parentId": 5,
-                    "children": []
-                    },
-                    {
-                    "id": 8,
-                    "name": "用户管理",
-                    "code": null,
-                    "address": "/userList",
-                    "icon": null,
-                    "menuType": 2,
-                    "parentId": 5,
-                    "children": []
-                    }
-                ]
+                    "address": null,
+                    "icon": "el-icon-setting",
+                    "menuType": 1,
+                    "parentId": null,
+                    "children": [
+                        {
+                        "id": 6,
+                        "name": "角色管理",
+                        "code": null,
+                        "address": "/roleList",
+                        "icon": null,
+                        "menuType": 2,
+                        "parentId": 5,
+                        "children": []
+                        },
+                        {
+                        "id": 7,
+                        "name": "菜单管理",
+                        "code": null,
+                        "address": "/menuList",
+                        "icon": null,
+                        "menuType": 2,
+                        "parentId": 5,
+                        "children": []
+                        },
+                        {
+                        "id": 8,
+                        "name": "用户管理",
+                        "code": null,
+                        "address": "/userList",
+                        "icon": null,
+                        "menuType": 2,
+                        "parentId": 5,
+                        "children": []
+                        }
+                    ]
                 },
                 {
-                "id": 9,
-                "name": "我的家",
-                "code": null,
-                "address": null,
-                "icon": "el-icon-printer",
-                "menuType": 1,
-                "parentId": null,
-                "children": [
-                    {
-                    "id": 10,
-                    "name": "小公主",
+                    "id": 9,
+                    "name": "我的家",
                     "code": null,
-                    "address": "/myLittlePrincess",
-                    "icon": null,
-                    "menuType": 2,
-                    "parentId": 9,
-                    "children": []
-                    }
-                ]
+                    "address": null,
+                    "icon": "el-icon-printer",
+                    "menuType": 1,
+                    "parentId": null,
+                    "children": [
+                        {
+                        "id": 10,
+                        "name": "小公主",
+                        "code": null,
+                        "address": "/myLittlePrincess",
+                        "icon": null,
+                        "menuType": 2,
+                        "parentId": 9,
+                        "children": []
+                        }
+                    ]
                 }
             ],
         }
