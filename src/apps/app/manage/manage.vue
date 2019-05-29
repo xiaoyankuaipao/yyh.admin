@@ -16,7 +16,7 @@
                     </nav>
                 </el-col>
                 <el-col :span="2">
-                    <img src="./img/user.png" style="width:50px;height:50px;margin-top:20px;margin-right:20px;float:right;">
+                    <img src="./img/user.png" style="width:30px;height:30px;margin-top:20px;margin-right:20px;float:right;">
                 </el-col>
             </el-row>
         </header>
