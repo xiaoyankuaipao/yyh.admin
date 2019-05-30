@@ -8,10 +8,10 @@
                 </div>
                 <el-form class="login_form" :model="loginForm" :rules="rules" ref="loginForm">
                     <el-form-item prop="userName">
-                        <el-input v-model="loginForm.userName" auto-complete="off" :prefix-icon="userNameIcon"   placeholder="| 请输入用户名" @focus="userFocusHandle(true)" @blur="userFocusHandle(flase)" @keyup.enter.native="submitForm('loginForm')"></el-input>
+                        <el-input v-model="loginForm.userName" auto-complete="off" :prefix-icon="userNameIcon"   placeholder="| 请输入用户名" @focus="userFocusHandle(true)" @blur="userFocusHandle(false)" @keyup.enter.native="submitForm('loginForm')"></el-input>
                     </el-form-item>
                     <el-form-item prop="password">
-                        <el-input type="password" v-model="loginForm.password" :prefix-icon="passwordIcon"  placeholder="| 请输入密码" @focus="passwordFocusHandle(true)" @blur="passwordFocusHandle(flase)" @keyup.enter.native="submitForm('loginForm')"></el-input>
+                        <el-input type="password" v-model="loginForm.password" :prefix-icon="passwordIcon"  placeholder="| 请输入密码" @focus="passwordFocusHandle(true)" @blur="passwordFocusHandle(false)" @keyup.enter.native="submitForm('loginForm')"></el-input>
                     </el-form-item>
                     <el-form-item>
                         <el-button :loading="loading" class="submit_btn" @click="submitForm('loginForm')">登录</el-button>
@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import {login} from '@/api/getData'
 export default {
     data(){
         return {
@@ -62,11 +63,40 @@ export default {
         passwordFocusHandle(isFocus){
             this.passwordFocus=isFocus;
         },
-        submitForm(formName){
-            this.loading=true;
-            console.log(this.loginForm);
+        async submitForm(formName){
+            // this.loading=true;
+             console.log(this.loginForm);
 
-            this.$router.push('manage');
+            // this.$router.push('manage');
+            this.$refs[formName].validate(async (valid) => {
+                if(valid){
+                    this.loading=true
+                    let res = await login({userName:this.loginForm.userName,password:this.loginForm.password,clientId:'SpaClient'});
+
+                    console.log(res);
+
+                    if(res.state == 1 && res.token){
+                        this.$message({
+                            type:'success',
+                            message:'登录成功'
+                        });
+                        this.$router.push('manage');
+                    }else{
+                        this.$message({
+                            type: 'error',
+                            message: res.error && res.error.message || '用户名或密码错误'
+                        });
+                        this.loading = false
+                    }
+                }else{
+                     this.$notify.error({
+                        title: '错误',
+                        message: '请输入正确的用户名密码',
+                        offset: 100
+                    });
+                    return false;
+                }
+            })
         }
     }
 }

@@ -19,6 +19,7 @@
         'Content-type' : 'application/json'
     };
     config.headers.Authorization = getStore('user_token');
+    return config;
  },error => {
      return Promise.reject(error);
  });
@@ -90,8 +91,8 @@
             return Promise.resolve(result);
         }
     }else{
-        router.push('/error');
-        return Promise.reject(err);
+        //router.push('/error');
+        return Promise.reject(error);
     }
  });
 

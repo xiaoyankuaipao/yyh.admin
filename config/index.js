@@ -7,33 +7,53 @@ const path = require('path')
 module.exports = {
   dev: {
 
-    // Paths
-    assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
-    proxyTable: {},
+    // // Paths
+    // assetsSubDirectory: 'static',
+    // assetsPublicPath: '/',
+    // proxyTable: {},
 
-    // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
-    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-    autoOpenBrowser: true,
-    errorOverlay: true,
-    notifyOnErrors: true,
-    poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
+    // // Various Dev Server settings
+    // host: 'localhost', // can be overwritten by process.env.HOST
+    // port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    // autoOpenBrowser: true,
+    // errorOverlay: true,
+    // notifyOnErrors: true,
+    // poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
     
-    /**
-     * Source Maps
-     */
+    // /**
+    //  * Source Maps
+    //  */
 
-    // https://webpack.js.org/configuration/devtool/#development
-    devtool: 'cheap-module-eval-source-map',
+    // // https://webpack.js.org/configuration/devtool/#development
+    // devtool: 'cheap-module-eval-source-map',
 
-    // If you have problems debugging vue-files in devtools,
-    // set this to false - it *may* help
-    // https://vue-loader.vuejs.org/en/options.html#cachebusting
-    cacheBusting: true,
+    // // If you have problems debugging vue-files in devtools,
+    // // set this to false - it *may* help
+    // // https://vue-loader.vuejs.org/en/options.html#cachebusting
+    // cacheBusting: true,
 
-    cssSourceMap: true
+    // cssSourceMap: true
+
+    env: require('./dev.env'),
+    host: 'localhost',
+    port: 8080,
+    autoOpenBrowser: true,
+    assetsSubDirectory: 'static',
+    assetsPublicPath: '/',
+    //代理路径
+    proxyTable: {
+        //'/api': { target: 'http://localhost:5000',changeOrigin: true }
+        '/api': { target: 'http://118.24.205.200:5000',changeOrigin: true }
+    },
+    context: [ ],
+    // CSS Sourcemaps off by default because relative paths are "buggy"
+    // with this option, according to the CSS-Loader README
+    // (https://github.com/webpack/css-loader#sourcemaps)
+    // In our experience, they generally work as expected,
+    // just be aware of this issue when enabling this option.
+    cssSourceMap: false,
+    devtool: 'source-map',
   },
 
   build: {

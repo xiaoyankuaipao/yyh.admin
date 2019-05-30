@@ -43,18 +43,18 @@ const router = new Router({
 /**
  * 路由拦截钩子函数
  */
-router.beforeEach((to,from,next) => {
-  if(to.matched.some(res=>res.meta.requireAuth)){
-    if(getStore('user_token')){
-      next()
-    }else{
-      next({
-        path:'/'
-      })
-    }
-  }else{
-    next();
-  }
-})
+// router.beforeEach((to,from,next) => {
+//   if(to.matched.some(res=>res.meta.requireAuth)){
+//     if(getStore('user_token')){
+//       next()
+//     }else{
+//       next({
+//         path:'/'
+//       })
+//     }
+//   }else{
+//     next();
+//   }
+// })
 
 export default router;
