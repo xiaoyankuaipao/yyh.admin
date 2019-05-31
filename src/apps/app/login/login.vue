@@ -64,17 +64,10 @@ export default {
             this.passwordFocus=isFocus;
         },
         async submitForm(formName){
-            // this.loading=true;
-             console.log(this.loginForm);
-
-            // this.$router.push('manage');
             this.$refs[formName].validate(async (valid) => {
                 if(valid){
                     this.loading=true
                     let res = await login({userName:this.loginForm.userName,password:this.loginForm.password,clientId:'SpaClient'});
-
-                    console.log(res);
-
                     if(res.state == 1 && res.token){
                         this.$message({
                             type:'success',

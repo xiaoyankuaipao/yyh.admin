@@ -36,7 +36,8 @@ module.exports = {
     // cssSourceMap: true
 
     env: require('./dev.env'),
-    host: 'localhost',
+    //host: 'localhost',
+    host:'127.0.0.1',
     port: 8080,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
