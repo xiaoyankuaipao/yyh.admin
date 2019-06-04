@@ -20,8 +20,9 @@
                 </el-col>
             </el-row>
             <el-dialog title="随便看" :visible.sync="dialogVisible" size="large">
-                    <img v-img:v="{thumbnails:true}" class="pan-img" :src="ewizardClap">
-                <!-- <el-img v-img:v="{thumbnails:true}" class="pan-img" :src="ewizardClap"></el-img> -->
+                <img v-img:v="{thumbnails:true}" class="pan-img" :src="ewizardClap">
+                <!-- <el-image v-img:v="{ thumbnails: true }"  class="pan-img" :src="ewizardClap" lazy></el-image> -->
+
             </el-dialog>
         </div>
     </div>

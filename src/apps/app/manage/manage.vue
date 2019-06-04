@@ -78,13 +78,23 @@ export default {
                 },
                 {
                     "id": 2,
-                    "name": "数据管理",
+                    "name": "Demo",
                     "code": null,
                     "address": null,
                     "icon": "el-icon-document",
                     "menuType": 1,
                     "parentId": null,
                     "children": [
+                        {
+                        "id": 11,
+                        "name": "图片懒加载1",
+                        "code": null,
+                        "address": "/imgLazy",
+                        "icon": null,
+                        "menuType": 2,
+                        "parentId": 2,
+                        "children": []
+                        },
                         {
                         "id": 3,
                         "name": "用户列表（demo）",

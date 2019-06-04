@@ -9,6 +9,8 @@ import ElementUI from 'element-ui/lib/index'
 import VueImg from 'v-img'
 import BaiduMap from 'vue-baidu-map'
 
+import VueLazyLoad from 'vue-lazyload'
+
 import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.config.productionTip = false
@@ -18,6 +20,7 @@ Vue.use(VueImg);
 Vue.use(BaiduMap,{
   ak:'7tj2GoWwsaehSlvUKFGDPGqXvdOfGkDa'
 })
+Vue.use(VueLazyLoad);
 Vue.use(plugin); //注册全局组件
 
 /* eslint-disable no-new */
