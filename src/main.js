@@ -20,7 +20,12 @@ Vue.use(VueImg);
 Vue.use(BaiduMap,{
   ak:'7tj2GoWwsaehSlvUKFGDPGqXvdOfGkDa'
 })
-Vue.use(VueLazyLoad);
+Vue.use(VueLazyLoad,{
+  preLoad:1.3,
+  error:'./static/images/imgLost.png',
+  loading:'./static/images/loading.gif',
+  listenEvents:['scroll']
+});
 Vue.use(plugin); //注册全局组件
 
 /* eslint-disable no-new */

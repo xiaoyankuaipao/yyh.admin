@@ -87,9 +87,19 @@ export default {
                     "children": [
                         {
                         "id": 11,
-                        "name": "图片懒加载1",
+                        "name": "图片懒加载",
                         "code": null,
                         "address": "/imgLazy",
+                        "icon": null,
+                        "menuType": 2,
+                        "parentId": 2,
+                        "children": []
+                        },
+                        {
+                        "id": 12,
+                        "name": "无线滚动",
+                        "code": null,
+                        "address": "/infiniteScroll",
                         "icon": null,
                         "menuType": 2,
                         "parentId": 2,
