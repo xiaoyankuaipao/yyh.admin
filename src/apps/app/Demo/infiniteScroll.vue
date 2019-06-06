@@ -1,12 +1,15 @@
 <template>
     <div class="demo-scroll-container">
-        <ul v-infinite-scroll="load" infinite-scroll-disabled="disabled">
+        <ul v-infinite-scroll="load" infinite-scroll-disabled="disabled" infinite-scroll-immediate="true">
             <li v-for="i in count" class="infinite-list-item" :key="i">
                 <a href="#">{{i}}</a>
             </li>
         </ul>
-        <p v-if="loading">p拼命加载中...</p>
+        <p v-if="loading">拼命加载中...</p>
         <p v-if="noMore">我也是有底线滴!!!</p>
+
+        <!-- el-backtop 是 element-ui 提供的 回到顶部 组件,版本 2.9.1 中加入   -->
+        <el-backtop target=".demo-scroll-container"></el-backtop>
     </div>
 </template>
 
@@ -20,7 +23,7 @@ export default {
     },
     computed:{
         noMore(){
-            return this.count>=20;
+            return this.count>=100;
         },
         disabled(){
             return this.loading || this.noMore
@@ -30,9 +33,9 @@ export default {
       load () {
         this.loading =true;
         setTimeout(()=>{
-            this.count+=2;
+            this.count+=5;
             this.loading=false;
-        },2000)
+        },1000)
       }
     }
 }
@@ -52,6 +55,7 @@ export default {
         height: 50px;
         line-height: 50px;
         margin: 10px auto;
+        margin-left: -25px;
         margin-right: 10px;
         text-decoration: none;
         text-align: center;

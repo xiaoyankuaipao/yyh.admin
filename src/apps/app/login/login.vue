@@ -23,7 +23,8 @@
 </template>
 
 <script>
-import {login} from '@/api/getData'
+import { login } from '@/api/getData'
+import { mapActions,mapState} from 'vuex'
 export default {
     data(){
         return {
@@ -57,22 +58,24 @@ export default {
         }
     },
     methods:{
+        ...mapActions(['saveUserToken']),
         userFocusHandle(isFocus){
-            this.userNameFocus=isFocus;
+            this.userNameFocus = isFocus
         },
         passwordFocusHandle(isFocus){
-            this.passwordFocus=isFocus;
+            this.passwordFocus = isFocus
         },
         async submitForm(formName){
             this.$refs[formName].validate(async (valid) => {
                 if(valid){
-                    this.loading=true
-                    let res = await login({userName:this.loginForm.userName,password:this.loginForm.password,clientId:'SpaClient'});
+                    this.loading = true
+                    let res = await login({userName:this.loginForm.userName,password:this.loginForm.password,clientId:'SpaClient'})
                     if(res.state == 1 && res.token){
                         this.$message({
                             type:'success',
                             message:'登录成功'
                         });
+                        this.saveUserToken(res.token.access_token)
                         this.$router.push('manage');
                     }else{
                         this.$message({

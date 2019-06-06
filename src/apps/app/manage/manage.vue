@@ -6,17 +6,18 @@
                 <el-col :span="8">
                     <img class="logo" src="./img/logo.png" alt=""><h1 style="float:left;">XXXX后台管理系统</h1>
                 </el-col>
-                <el-col :span="14">
+                <el-col :span="13">
                     <nav>
                         <ul class="nav-list">
-                            <li  v-for="(value,index) in mainMenus" :key="index" @click="mainMenuClick(index)">
+                            <li v-for="(value,index) in mainMenus" :key="index" @click="mainMenuClick(index)" :class="{'active':index==selectMainMenuInex}">
                                 {{value}}
                             </li>
                         </ul>
                     </nav>
                 </el-col>
-                <el-col :span="2">
-                    <img src="./img/user.png" style="width:30px;height:30px;margin-top:20px;margin-right:20px;float:right;">
+                <el-col :span="3">
+                    <!-- <img src="./img/user.png" style="width:30px;height:30px;margin-top:15px;margin-right:30px;float:right;"> -->
+                    <user-show></user-show>
                 </el-col>
             </el-row>
         </header>
@@ -54,13 +55,20 @@
 
 <script>
 import headTop from '../../components/headTop'
+import userShow from '../../components/usrShow'
+import { mapActions, mapState } from 'vuex'
+import { getUserMenu,getUserBtn} from '@/api/getData'
+import { getStore} from '@/config/mUtils'
+
 export default {
     components:{
-        headTop
+        headTop,
+        userShow
     },
     data(){
         return{
             mainMenus:['菜单一','菜单二','菜单三','菜单四'],
+            selectMainMenuInex:0,
             hasPermission:false,
             startLoading:false,
             menuCollapsed:false,
@@ -78,7 +86,7 @@ export default {
                 },
                 {
                     "id": 2,
-                    "name": "Demo",
+                    "name": "组件使用",
                     "code": null,
                     "address": null,
                     "icon": "el-icon-document",
@@ -97,9 +105,19 @@ export default {
                         },
                         {
                         "id": 12,
-                        "name": "无线滚动",
+                        "name": "无限滚动",
                         "code": null,
                         "address": "/infiniteScroll",
+                        "icon": null,
+                        "menuType": 2,
+                        "parentId": 2,
+                        "children": []
+                        },
+                        {
+                        "id": 13,
+                        "name": "滚动加载",
+                        "code": null,
+                        "address": "/scrollLoad",
                         "icon": null,
                         "menuType": 2,
                         "parentId": 2,
@@ -200,19 +218,70 @@ export default {
            return this.$route.path;
         },
     },
-    mounted(){
+    async mounted(){
         setTimeout(()=>{this.startLoading=true},0);/* setTimeout() 方法用于在指定的毫秒数后调用函数或计算表达式。*/
-        setTimeout(()=>{this.startLoading=false;this.hasPermission=true},3000);
+        //setTimeout(()=>{this.startLoading=false;this.hasPermission=true},2000);
+        if(getStore('user_token')){
+            await this.getUserData();
+            //await this.getMenus();
+            await this.getBtn();
+
+            this.startLoading=false;
+            this.hasPermission=true;
+        }else{
+            this.$router.push("/");
+            this.$message({
+                type: "error",
+                message: "当前用户未登录，请先登陆"
+            });
+        }
     },
     methods:{
+        ...mapActions(['getUserData','saveUserBtn']),
         mainMenuClick(index){
-            alert(this.mainMenus[index]);
+            this.selectMainMenuInex=index;
+            //alert(this.mainMenus[index]);
         },
         onCollapse(){
             this.menuCollapsed=!this.menuCollapsed;
             /*触发window的resize事件*/
 			setTimeout('window.$ && window.$(window).trigger("resize")', 500)
-        }
+        },
+        async getMenus() {
+            const res = await getUserMenu();
+            if (res.state == 1) {
+                this.startLoading = false;
+                this.subMenus = res.data;
+            } else {
+                this.$message({
+                type: "err",
+                message: "用户菜单获取失败"
+                });
+            }
+        },
+        async getBtn(){
+            const res=await getUserBtn();
+            if(res.state==1){
+                this.saveUserBtn(res.data);
+            }else{
+                this.$message({
+                    type: "err",
+                    message: "用户按钮权限获取失败"
+                });
+            }
+        },
+        async getMenus() {
+            const res = await getUserMenu();
+            if (res.state == 1) {
+                this.startLoading = false;
+                this.subMenus = res.data;
+            } else {
+                this.$message({
+                    type: "err",
+                    message: "用户菜单获取失败"
+                });
+            }
+        },
     }
 }
 </script>
