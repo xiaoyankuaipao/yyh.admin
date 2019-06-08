@@ -74,139 +74,7 @@ export default {
             menuCollapsed:false,
             /*子菜单，左侧*/
             subMenus: [
-                {
-                    "id": 1,
-                    "name": "首页",
-                    "code": null,
-                    "address": "/manage",
-                    "icon": "el-icon-menu",
-                    "menuType": 2,
-                    "parentId": null,
-                    "children": []
-                },
-                {
-                    "id": 2,
-                    "name": "组件使用",
-                    "code": null,
-                    "address": null,
-                    "icon": "el-icon-document",
-                    "menuType": 1,
-                    "parentId": null,
-                    "children": [
-                        {
-                        "id": 11,
-                        "name": "图片懒加载",
-                        "code": null,
-                        "address": "/imgLazy",
-                        "icon": null,
-                        "menuType": 2,
-                        "parentId": 2,
-                        "children": []
-                        },
-                        {
-                        "id": 12,
-                        "name": "无限滚动",
-                        "code": null,
-                        "address": "/infiniteScroll",
-                        "icon": null,
-                        "menuType": 2,
-                        "parentId": 2,
-                        "children": []
-                        },
-                        {
-                        "id": 13,
-                        "name": "滚动加载",
-                        "code": null,
-                        "address": "/scrollLoad",
-                        "icon": null,
-                        "menuType": 2,
-                        "parentId": 2,
-                        "children": []
-                        },
-                        {
-                        "id": 3,
-                        "name": "用户列表（demo）",
-                        "code": null,
-                        "address": "/userListDemo",
-                        "icon": null,
-                        "menuType": 2,
-                        "parentId": 2,
-                        "children": []
-                        },
-                        {
-                        "id": 4,
-                        "name": "商户列表（demo）",
-                        "code": null,
-                        "address": "/shopList",
-                        "icon": null,
-                        "menuType": 2,
-                        "parentId": 2,
-                        "children": []
-                        }
-                    ]
-                },
-                {
-                    "id": 5,
-                    "name": "系统管理",
-                    "code": null,
-                    "address": null,
-                    "icon": "el-icon-setting",
-                    "menuType": 1,
-                    "parentId": null,
-                    "children": [
-                        {
-                        "id": 6,
-                        "name": "角色管理",
-                        "code": null,
-                        "address": "/roleList",
-                        "icon": null,
-                        "menuType": 2,
-                        "parentId": 5,
-                        "children": []
-                        },
-                        {
-                        "id": 7,
-                        "name": "菜单管理",
-                        "code": null,
-                        "address": "/menuList",
-                        "icon": null,
-                        "menuType": 2,
-                        "parentId": 5,
-                        "children": []
-                        },
-                        {
-                        "id": 8,
-                        "name": "用户管理",
-                        "code": null,
-                        "address": "/userList",
-                        "icon": null,
-                        "menuType": 2,
-                        "parentId": 5,
-                        "children": []
-                        }
-                    ]
-                },
-                {
-                    "id": 9,
-                    "name": "我的家",
-                    "code": null,
-                    "address": null,
-                    "icon": "el-icon-printer",
-                    "menuType": 1,
-                    "parentId": null,
-                    "children": [
-                        {
-                        "id": 10,
-                        "name": "小公主",
-                        "code": null,
-                        "address": "/myLittlePrincess",
-                        "icon": null,
-                        "menuType": 2,
-                        "parentId": 9,
-                        "children": []
-                        }
-                    ]
-                }
+                
             ],
         }
     },
@@ -223,7 +91,7 @@ export default {
         //setTimeout(()=>{this.startLoading=false;this.hasPermission=true},2000);
         if(getStore('user_token')){
             await this.getUserData();
-            //await this.getMenus();
+            await this.getMenus();
             await this.getBtn();
 
             this.startLoading=false;
@@ -254,8 +122,8 @@ export default {
                 this.subMenus = res.data;
             } else {
                 this.$message({
-                type: "err",
-                message: "用户菜单获取失败"
+                    type: "err",
+                    message: "用户菜单获取失败"
                 });
             }
         },

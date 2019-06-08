@@ -7,6 +7,9 @@ import Home from '../apps/app/home/home'
 
 import demo from './demo.js'
 
+
+import ConfigSystemRoute from './configSystem'
+
 import {getStore} from '../config/mUtils'
 Vue.use(Router)
 
@@ -34,7 +37,8 @@ const router = new Router({
           name:'home',
           component:Home
         },
-        ...demo
+        ...demo,
+        ...ConfigSystemRoute
       ]
     }
   ]

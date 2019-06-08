@@ -267,7 +267,7 @@ export default {
      overflow: auto;
      width: 100%;
      height: 100%;
-     background-color: aqua;
+     //background-color: aqua;
      img{
          width: 200px;
          height: 180px;

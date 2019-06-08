@@ -3,6 +3,9 @@
  */
 import ySubmenu from './menu/submenu.vue'
 import yMenu from './menu/index';
+import yTable from './table/table';
+import yTreeGrid from './treegrid/treegrid.vue'
+import yTreeSelect from './comboxtree/comboxtree.vue'
 
 
 /*扩展方法 */
@@ -10,7 +13,10 @@ import * as mUtils from '@/config/mUtils';
 
 var plugin={
     ySubmenu:ySubmenu,
-    yMenu:yMenu
+    yMenu:yMenu,
+    yTable:yTable,
+    yTreeGrid:yTreeGrid,
+    yTreeSelect:yTreeSelect
 };
 
 export default {

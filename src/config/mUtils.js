@@ -69,10 +69,10 @@ export const setPermissions = permissionNames => {
  * 对象数组深拷贝(如何区分深拷贝与浅拷贝，简单点来说，就是假设B复制了A，当修改A时，看B是否会发生变化，如果B也跟着变了，说明这是浅拷贝，拿人手短，如果B没变，那就是深拷贝，自食其力。)
  * source是原数据，extenObj是新增的键值对
  */
-export const objArrayCopy = (source, extenObj) => {
+export const objArrDeepCopy = (source, extenObj) => {
     let sourceCopy = source instanceof Array ? [] : {};
-    for(let item in souce){
-        sourceCopy[item] = typeof souce[item] === 'object' ? objArrayCopy(souce[item],extenObj):souce[item];
+    for(let item in source){
+        sourceCopy[item] = typeof source[item] === 'object' ? objArrDeepCopy(source[item],extenObj):source[item];
         if(typeof extenObj === 'object' && !(sourceCopy instanceof Array)){
             for(let param in extenObj){
                 sourceCopy[param] = extenObj[param];
