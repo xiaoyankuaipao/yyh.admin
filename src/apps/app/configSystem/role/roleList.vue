@@ -4,10 +4,10 @@
             <div slot="header" class="clearfix" v-text="title"></div>
             <el-row>
                 <el-button-group style="margin-bottom:20px;">
-                    <el-button type="primary" icon="el-icon-add" @click="onCreate" >创建</el-button>
-                    <el-button type="primary" icon="el-icon-edit" @click="onUpdate">修改</el-button>
-                    <el-button type="danger" icon="el-icon-delete" @click="onDelete" >删除</el-button>
-                    <el-button type="default" icon="el-icon-edit-outline" @click="onRoleAccessManagement" >角色权限管理</el-button>
+                    <el-button type="primary" icon="el-icon-add" @click="onCreate" v-btnhas="role_add">创建</el-button>
+                    <el-button type="primary" icon="el-icon-edit" @click="onUpdate" v-btnhas="role_edit">修改</el-button>
+                    <el-button type="danger" icon="el-icon-delete" @click="onDelete"  v-btnhas="role_delete">删除</el-button>
+                    <el-button type="default" icon="el-icon-edit-outline" @click="onRoleAccessManagement" v-btnhas="role_accessMenu">角色权限管理</el-button>
                 </el-button-group> 
             </el-row>
             <el-row>

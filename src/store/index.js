@@ -31,7 +31,7 @@ const actions = {
         }catch(err){
 
         }
-    }
+    },
 }
 
 const mutations = {

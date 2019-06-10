@@ -5,9 +5,9 @@
       <el-row class="table_buttons">
         <el-col :span="10">
           <el-button-group>
-            <el-button type="primary" icon="el-icon-add" @click="onCreate">创建</el-button>
-            <el-button type="primary" icon="el-icon-edit" @click="onUpdate" >修改</el-button>
-            <el-button type="danger" icon="el-icon-delete" @click="onDelete">删除</el-button>
+            <el-button type="primary" icon="el-icon-add" @click="onCreate" v-btnhas="menu_add">创建</el-button>
+            <el-button type="primary" icon="el-icon-edit" @click="onUpdate" v-btnhas="menu_edit">修改</el-button>
+            <el-button type="danger" icon="el-icon-delete" @click="onDelete" v-btnhas="menu_delete">删除</el-button>
           </el-button-group>
         </el-col>
       </el-row>

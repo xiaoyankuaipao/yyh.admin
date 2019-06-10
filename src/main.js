@@ -6,6 +6,8 @@ import router from './router'
 import store from './store/index'
 import plugin from './apps/plugins/index' //全局组件
 
+import btnhas from './apps/directives/btnPermission';//按钮权限指令
+
 import ElementUI from 'element-ui/lib/index'
 import VueImg from 'v-img'
 import BaiduMap from 'vue-baidu-map'
@@ -28,6 +30,7 @@ Vue.use(VueLazyLoad,{
   listenEvents:['scroll']
 });
 Vue.use(plugin); //注册全局组件
+Vue.use(btnhas);
 
 /* eslint-disable no-new */
 new Vue({
