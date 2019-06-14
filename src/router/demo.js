@@ -2,6 +2,7 @@ import demo1 from '../apps/app/Demo/demo1'
 import imgLazy from '../apps/app/Demo/imgLazy'
 import infiniteScroll from '../apps/app/Demo/infiniteScroll'
 import scrollLoad from '../apps/app/Demo/scrollLoad'
+import fixedNavBar from '../apps/app/Demo/fixedNavBar'
 
 
 export default [
@@ -28,5 +29,11 @@ export default [
         name:'scrollLoad',
         component:scrollLoad,
         meta:["组件使用","滚动加载"]
+    },
+    {
+        path:'/fixedNavBar',
+        name:'fixedNavBar',
+        component:fixedNavBar,
+        meta:['组件使用','固定导航栏']
     }
 ]

@@ -10,14 +10,14 @@
                     <nav>
                         <ul class="nav-list">
                             <li v-for="(value,index) in mainMenus" :key="index" @click="mainMenuClick(index)" :class="{'active':index==selectMainMenuInex}">
-                                {{value}}
+                                {{value.name}}
                             </li>
                         </ul>
                     </nav>
                 </el-col>
                 <el-col :span="3">
                     <!-- <img src="./img/user.png" style="width:30px;height:30px;margin-top:15px;margin-right:30px;float:right;"> -->
-                    <user-show></user-show>
+                    <user-show @goToHome="gohome"></user-show>
                 </el-col>
             </el-row>
         </header>
@@ -30,7 +30,8 @@
             <!-- 导航 -->
             <div :class="{'el-col':true,'el-col-4':true,'navigation':true,'collapsed':menuCollapsed}">
                 <!-- 菜单 -->
-                <y-menu :default-active="defaultActive" :data="subMenus"></y-menu>
+                <!-- <y-menu :default-active="defaultActive" :data="subMenus"></y-menu> -->
+                <y-menu :data="subMenus"></y-menu>
                 <!-- 收缩按钮 -->
                 <div class="shrink">
                     <a href="javacript:;" class="collapseBtn" @click="onCollapse">
@@ -67,15 +68,15 @@ export default {
     },
     data(){
         return{
-            mainMenus:['菜单一','菜单二','菜单三','菜单四'],
+            //mainMenus:['菜单一','菜单二','菜单三','菜单四'],
+            /**主菜单，头部 */
+            mainMenus:[],
             selectMainMenuInex:0,
             hasPermission:false,
             startLoading:false,
-            menuCollapsed:false,
+            menuCollapsed:true,
             /*子菜单，左侧*/
-            subMenus: [
-                
-            ],
+            subMenus: [],
         }
     },
     computed:{
@@ -107,25 +108,20 @@ export default {
     methods:{
         ...mapActions(['getUserData','saveUserBtn']),
         mainMenuClick(index){
-            this.selectMainMenuInex=index;
-            //alert(this.mainMenus[index]);
+            this.selectMainMenuInex = index;
+            var main=this.mainMenus[index];
+            this.subMenus=[main];
+            if(main.children.length==0){
+                this.menuCollapsed=true;
+                this.$router.push(main.address);
+            }else{
+                this.menuCollapsed=false;
+            }
         },
         onCollapse(){
             this.menuCollapsed=!this.menuCollapsed;
             /*触发window的resize事件*/
 			setTimeout('window.$ && window.$(window).trigger("resize")', 500)
-        },
-        async getMenus() {
-            const res = await getUserMenu();
-            if (res.state == 1) {
-                this.startLoading = false;
-                this.subMenus = res.data;
-            } else {
-                this.$message({
-                    type: "err",
-                    message: "用户菜单获取失败"
-                });
-            }
         },
         async getBtn(){
             const res=await getUserBtn();
@@ -142,7 +138,8 @@ export default {
             const res = await getUserMenu();
             if (res.state == 1) {
                 this.startLoading = false;
-                this.subMenus = res.data;
+                //this.subMenus = res.data;
+                this.mainMenus=res.data;
             } else {
                 this.$message({
                     type: "err",
@@ -150,6 +147,9 @@ export default {
                 });
             }
         },
+        gohome(){
+            this.mainMenuClick(0);
+        }
     }
 }
 </script>

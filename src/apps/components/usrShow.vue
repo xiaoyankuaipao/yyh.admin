@@ -43,7 +43,8 @@ export default {
     methods:{
         async handleCommand(command){
             if(command == 'home'){
-                this.$router.push('/manage')
+                //this.$router.push('/manage')
+                this.$emit('goToHome');
             }else if(command == 'changePwd'){
                 //this.dialogVisible = true
                 alert('开发中……')

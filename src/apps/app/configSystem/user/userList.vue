@@ -2,14 +2,14 @@
     <div class="table-container">
         <el-card class="box-card" style="margin:10px">
             <div slot="header" class="clearfix" v-text="title"></div>
-            <el-rows >
+            <el-row >
                 <el-button-group style="margin-bottom:10px;">
                     <el-button type="primary" icon="el-icon-plus" @click="onCreate" v-btnhas="user_add">添加</el-button>
                     <el-button type="primary" icon="el-icon-edit" @click="onEdit" v-btnhas="user_edit">修改</el-button>
                     <el-button type="danger" icon="el-icon-delete" @click="onDelete" v-btnhas="user_delete">删除</el-button>
                     <el-button type="default" icon="el-icon-edit-outline" @click="onAssignRoles" v-btnhas="user_assignRole">为用户分配角色</el-button>
                 </el-button-group>
-            </el-rows>
+            </el-row>
             <y-table ref="tableUser" :search-api="searchApi">
                 <template slot="columns">
                     <el-table-column type="index" width="40"></el-table-column>
