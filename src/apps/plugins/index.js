@@ -6,6 +6,8 @@ import yMenu from './menu/index';
 import yTable from './table/table';
 import yTreeGrid from './treegrid/treegrid.vue'
 import yTreeSelect from './comboxtree/comboxtree.vue'
+import yGototop from './gototop/index';
+import yPicloopplay from './picLoopPlay/index'
 
 
 /*扩展方法 */
@@ -16,7 +18,9 @@ var plugin={
     yMenu:yMenu,
     yTable:yTable,
     yTreeGrid:yTreeGrid,
-    yTreeSelect:yTreeSelect
+    yTreeSelect:yTreeSelect,
+    yGototop:yGototop,
+    yPicloopplay:yPicloopplay
 };
 
 export default {

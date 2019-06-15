@@ -7,7 +7,10 @@
         <img  v-for="(item,index) in urls" :key="index" v-lazy="item" v-img:v="{thumbnails:true}" :src="item">
 
         <!-- el-backtop 是 element-ui 提供的 回到顶部 组件,版本 2.9.1 中加入   -->
-        <el-backtop target=".demo-image-lazy"></el-backtop>
+        <!-- <el-backtop target=".demo-image-lazy"></el-backtop> -->
+
+        <!-- y-gototop 是自己编写的 回到 顶部组件  -->
+        <y-gototop target=".demo-image-lazy"></y-gototop>
     </div>
 </template>
 
@@ -262,12 +265,11 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
  .demo-image-lazy{
      overflow: auto;
      width: 100%;
      height: 100%;
-     //background-color: aqua;
      img{
          width: 200px;
          height: 180px;
@@ -280,4 +282,6 @@ export default {
          }
      }
  }
+
+ 
 </style>

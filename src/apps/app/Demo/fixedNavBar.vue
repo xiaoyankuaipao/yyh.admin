@@ -11,6 +11,8 @@
                 <li v-for="index in liCount" :key="index"><a href="#">{{index}}</a></li>
             </ul>
         </div>
+        <!-- y-gototop 是自己编写的 回到 顶部组件  -->
+        <y-gototop target=".demo-fixed-container"></y-gototop>
     </div>
 </template>
 
@@ -26,7 +28,6 @@ export default {
         handleScroll(){
             //let scrollTop=window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
             let scrollTop = document.querySelector(".demo-fixed-container").scrollTop;
-            console.log(scrollTop);
             let topBar = document.querySelector("#topPart");
             let navBar = document.querySelector("#navBar");
             let mainPart = document.querySelector("#mainPart");
@@ -40,11 +41,14 @@ export default {
         }
     },
     mounted(){
+        //window.addEventListener('scroll',this.handleScroll);
         var dicScroll = document.querySelector(".demo-fixed-container");
         dicScroll.addEventListener('scroll',this.handleScroll);
     },
     destroyed(){
-        window.removeEventListener('scroll',this.handleScroll);
+        // window.removeEventListener('scroll',this.handleScroll);
+        var dicScroll = document.querySelector(".demo-fixed-container");
+        dicScroll.removeEventListener('scroll',this.handleScroll);
     }
 }
 </script>
@@ -66,11 +70,11 @@ export default {
     background-color: rgb(50, 64, 86)
 }
 #mainPart{
-    width: 100%;
+    //width: 100%;
     ul{
         list-style: none;
         li{
-            width: calc(100%-200px);
+            width:300px;
             height: 40px;
             background-color: orange;
             margin-bottom: 10px;
@@ -81,5 +85,6 @@ export default {
     position:fixed;
     //top:0px;
     top: 108px;
+    transition:all 0.6s ease 0s;
 }
 </style>

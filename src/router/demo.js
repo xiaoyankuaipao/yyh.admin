@@ -3,6 +3,7 @@ import imgLazy from '../apps/app/Demo/imgLazy'
 import infiniteScroll from '../apps/app/Demo/infiniteScroll'
 import scrollLoad from '../apps/app/Demo/scrollLoad'
 import fixedNavBar from '../apps/app/Demo/fixedNavBar'
+import picloopdisplay from '../apps/app/Demo/picloopplay'
 
 
 export default [
@@ -35,5 +36,11 @@ export default [
         name:'fixedNavBar',
         component:fixedNavBar,
         meta:['组件使用','固定导航栏']
+    },
+    {
+        path:'/picloopdisplay',
+        name:'picloopdisplay',
+        component:picloopdisplay,
+        meta:['组件使用','自定义的图片轮播组件']
     }
 ]
