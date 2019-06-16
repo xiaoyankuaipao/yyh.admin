@@ -3,15 +3,17 @@
 -->
 <template>
     <div class="slideBox">
-        <div>
+        <!-- <div class="bd">
             <ul>
                 <li v-for="(address,index) in urls" :key="index" :class="{'noactive':nowPic!=index}">
-                    <img :src="address" alt="">
+                    <img :src="address" alt="" style="width:100%;height:100%;">
                 </li>
             </ul>
-        </div>
-        <a class="prev" href="javascript:void(0)"></a>
-        <a class="next" href="javascript:void(0)"></a>
+        </div> -->
+        <img  v-for="(address,index) in urls " :key="index" :src="address"  v-show="index==nowPic"
+         style="width:100%;height:100%;">
+        <a class="prev" href="javascript:void(0)" @click="prev"></a>
+        <a class="next" href="javascript:void(0)" @click="next"></a>
     </div>
 </template>
 
@@ -36,12 +38,19 @@ export default {
         var incount=this.urls.length;
         setInterval(()=>{
             this.nowPic = incount % this.urls.length;
-            console.log(this.nowPic);
             incount++;
             if(incount>100){
                 incount=this.urls.length;
             }
-        },1500)
+        },2000)
+    },
+    methods:{
+        prev(){
+
+        },
+        next(){
+
+        }
     }
 }
 </script>
@@ -53,7 +62,7 @@ export default {
     overflow:hidden; 
     position:relative; 
     top:0px;
-    .pre{
+    .prev{
         position:absolute; 
         left:3%; 
         top:50%; 
@@ -61,18 +70,56 @@ export default {
         display:block; 
         width:32px; 
         height:40px;
-        background:url(./img/arrows.png) -110px 5px no-repeat; 
-        filter:alpha(opacity=50);opacity:0.5;   
+        background:url(./img/slider-arrow.png) -110px 5px no-repeat; 
+        opacity:0.5; 
+        &:hover{
+            opacity:1;
+        }
+    };
+    .next{
+        position:absolute; 
+        right:3%; 
+        top:50%; 
+        margin-top:-25px; 
+        display:block; 
+        width:32px; 
+        height:40px;
+        background:url(./img/slider-arrow.png) 0px 5px no-repeat; 
+        opacity:0.5; 
+        &:hover{
+            opacity:1;
+        }
     }
 }
-ul{
-    list-style: none;
-    li{
-        margin-left:0;
-    }
-}
+
 .noactive{
-    display:none;
+    //display:none;
+    //transition: opacity ;
+}
+
+.whenshow{
+    //完全不透明
+    opacity: 1;
+}
+
+.whenhide{
+    //完全透明
+    opacity: 0;
+    transition: all 1s;
+}
+
+.change{
+    opacity: 1;
+    .value{
+        opacity: 1;
+        transition: all 1s;
+        &.show{
+            opacity: 1;
+        }
+        &.hide{
+            opacity: 0;
+        }
+    }
 }
 
 </style>
