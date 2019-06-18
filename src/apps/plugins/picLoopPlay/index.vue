@@ -3,17 +3,14 @@
 -->
 <template>
     <div class="slideBox">
-        <!-- <div class="bd">
-            <ul>
-                <li v-for="(address,index) in urls" :key="index" :class="{'noactive':nowPic!=index}">
-                    <img :src="address" alt="" style="width:100%;height:100%;">
-                </li>
-            </ul>
-        </div> -->
-        <img  v-for="(address,index) in urls " :key="index" :src="address"  v-show="index==nowPic"
-         style="width:100%;height:100%;">
+        <img  v-for="(address,index) in urls " :key="index" :src="address" :class="changePicShowClass(index)" >
         <a class="prev" href="javascript:void(0)" @click="prev"></a>
         <a class="next" href="javascript:void(0)" @click="next"></a>
+        <ul>
+            <li v-for="(address,index) in urls" :key="index">
+                <div @click="onClickCircle(index)" :class="{'normal': index != nowPic,'click': index == nowPic}"></div>
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -31,25 +28,48 @@ export default {
     },
     data(){
         return {
-            nowPic:0
+            /**当前图片索引 */
+            nowPic:0,
+            /**上一张图片索引 */
+            lastPicIndex:-1
+        }
+    },
+    computed:{
+        changePicShowClass(){
+            return function(index){
+                return { beginShow: index == this.nowPic, beginHide: index == this.lastPicIndex || index != this.nowPic}
+            }
         }
     },
     mounted(){
-        var incount=this.urls.length;
-        setInterval(()=>{
-            this.nowPic = incount % this.urls.length;
-            incount++;
-            if(incount>100){
-                incount=this.urls.length;
-            }
-        },2000)
+        setInterval(() => {
+            this.next();
+        },5000)
     },
     methods:{
+        /**上一张 */
         prev(){
-
+            this.lastPicIndex = this.nowPic;
+            if(this.nowPic == 0){
+                this.nowPic = this.urls.length - 1;
+            }
+            else{
+                this.nowPic --;
+            }
         },
+        /**下一张 */
         next(){
-
+            this.lastPicIndex = this.nowPic;
+            if(this.nowPic == this.urls.length - 1){
+                this.nowPic = 0;
+            }else{
+                this.nowPic ++;
+            }
+        },
+        /**点击小圆圈 */
+        onClickCircle(index){
+            this.lastPicIndex = this.index;
+            this.nowPic = index;
         }
     }
 }
@@ -62,6 +82,14 @@ export default {
     overflow:hidden; 
     position:relative; 
     top:0px;
+    img{
+        position:absolute;
+        left: 0;
+        top:0;
+        width:100%;
+        height:100%;
+        transition: opacity 2s
+    }
     .prev{
         position:absolute; 
         left:3%; 
@@ -90,36 +118,40 @@ export default {
             opacity:1;
         }
     }
-}
-
-.noactive{
-    //display:none;
-    //transition: opacity ;
-}
-
-.whenshow{
-    //完全不透明
-    opacity: 1;
-}
-
-.whenhide{
-    //完全透明
-    opacity: 0;
-    transition: all 1s;
-}
-
-.change{
-    opacity: 1;
-    .value{
+    .beginShow{
         opacity: 1;
-        transition: all 1s;
-        &.show{
-            opacity: 1;
-        }
-        &.hide{
-            opacity: 0;
+    }
+    .beginHide{
+        opacity: 0;
+    }
+    ul{
+        list-style: none;
+        z-index: 999;
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 50px;
+        bottom: 0px;
+        text-align: center;
+        line-height: 50px;
+        li{
+            display: inline-block;
+            color: red;
+            width: 30px;
+            div{
+                width:10px;
+                height:10px;
+                border-radius: 50%;
+                cursor: pointer;
+                &.normal{
+                    background: #CD3700; 
+                }
+                &.click{
+                    background: #FFF959;
+                }
+            }
         }
     }
 }
-
 </style>

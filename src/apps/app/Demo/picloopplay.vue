@@ -9,6 +9,8 @@ export default {
     data(){
         return {
             picData:[
+                'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3884861603,63467093&fm=26&gp=0.jpg',
+                'http://pic39.nipic.com/20140314/8098773_002550872154_2.jpg',
                 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561187918&di=0226719f40cd13f2cdbc5655c8a73f92&imgtype=jpg&er=1&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F9678463fe652730cd52d1285d8874782f428b0ed1f9db-JevoUv_fw658',
                 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561187945&di=c3c5a7ae0baddd3465f2be98232f1b81&imgtype=jpg&er=1&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Fa164605c111d5bf56e4f3a3590faab32ca3cd9b2cea2-S3P47q_fw658'
             ]
