@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import error from '../apps/app/error/error'
 import Login from '../apps/app/login/login'
 import Manage from '../apps/app/manage/manage'
+import myFamily from "./myFamily.js";
 import Home from '../apps/app/home/home'
 
 import demo from './demo.js'
@@ -38,7 +39,8 @@ const router = new Router({
           component:Home
         },
         ...demo,
-        ...ConfigSystemRoute
+        ...ConfigSystemRoute,
+        ...myFamily
       ]
     }
   ]
