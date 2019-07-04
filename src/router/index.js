@@ -10,6 +10,7 @@ import demo from './demo.js'
 
 
 import ConfigSystemRoute from './configSystem'
+import ArticleSystemRoute from './articleSystem'
 
 import {getStore} from '../config/mUtils'
 Vue.use(Router)
@@ -40,6 +41,7 @@ const router = new Router({
         },
         ...demo,
         ...ConfigSystemRoute,
+        ...ArticleSystemRoute,
         ...myFamily
       ]
     }

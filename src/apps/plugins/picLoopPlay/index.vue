@@ -94,7 +94,7 @@ export default {
         position:absolute; 
         left:3%; 
         top:50%; 
-        margin-top:-25px; 
+        margin-top:-20px; 
         display:block; 
         width:32px; 
         height:40px;
@@ -108,7 +108,7 @@ export default {
         position:absolute; 
         right:3%; 
         top:50%; 
-        margin-top:-25px; 
+        margin-top:-20px; 
         display:block; 
         width:32px; 
         height:40px;
