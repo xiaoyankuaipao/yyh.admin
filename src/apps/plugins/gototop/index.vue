@@ -4,8 +4,9 @@
 * Date:2019-06-15
 -->
 <template>
-    <div class="goto-top-box" >
-        <img src="./img/up.png"  @click="goToTop">
+    <div class="goto-top-box" @click="goToTop">
+        <!-- <img src="./img/up.png"  @click="goToTop"> -->
+        <i class="iconfont icon-arrowup"></i>
     </div>
 </template>
 
@@ -28,11 +29,19 @@ export default {
             }else{
                 target = document.querySelector(this.target)
             }
-            var scrollTop = target.scrollTop
+            var scrollTop =  target.pageYOffset || target.scrollTop || document.documentElement.scrollTop || document.body.scrollTop;
+
             var jumpPx = scrollTop / 100
             var sh = setInterval(()=>{
                 scrollTop = scrollTop - jumpPx;
-                target.scrollTop = scrollTop - jumpPx;
+                if(this.target == ''){
+                    document.documentElement.scrollTop=scrollTop - jumpPx;
+                     
+                }else{
+                    target.scrollTop = scrollTop - jumpPx;
+                }
+               
+                
                 if(scrollTop < jumpPx){
                     clearInterval(sh);
                 }
@@ -41,14 +50,14 @@ export default {
     },
     mounted(){
         let target;
-        if(this.target==''){
+        if(!this.target || this.target == ''){
             target = window
         }else{
             target = document.querySelector(this.target)
         }
 
         target.onscroll = function(){
-            const scrollTop = target.scrollTop
+            const scrollTop = target.scrollTop || window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
             const goTop=document.querySelector('.goto-top-box')
             if(scrollTop>200){
                 goTop.style.display='block';
@@ -66,15 +75,28 @@ export default {
 .goto-top-box{
     display: none;
     position: fixed;
-    bottom: 50px;
-    right: 50px;
-    background-color: #fff;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
+    right: 2em;
+    bottom: 4em;
+    text-align: center;
+    background: #2a3c40;
+    background-size: 200% auto;
     border-radius: 50%;
+    cursor: pointer;
+    opacity: 1;
+    z-index: 1000;
     &:hover{
-        background-color:#C0C4CC;
+        background: linear-gradient(top right,#161f21 35%,#2a3c40 100%)
     }
+    i{
+        display: inline-block;
+        line-height: 50px;
+        font-size:25px; 
+         color: #fff;
+    }
+
+    
     img{
         position:relative;
         top:50%; 
@@ -84,5 +106,7 @@ export default {
         height: 100%;
     }
 }
+
+
 
 </style>
