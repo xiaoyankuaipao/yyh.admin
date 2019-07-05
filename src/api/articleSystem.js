@@ -14,4 +14,4 @@ export const deleteCategory = data => axiosService.DELETE('/api/articlemanage/Ar
 /**
  * 获取文章分类列表
  */
-export const getCategoryList = axiosService.GET('/api/articlemanage/ArticleCategoty/GetArticleCategoryList')
+export const getCategoryList = ()=> axiosService.GET('/api/articlemanage/ArticleCategoty/GetArticleCategoryList')
