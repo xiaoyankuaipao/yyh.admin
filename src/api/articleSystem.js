@@ -17,6 +17,10 @@ export const deleteCategory = data => axiosService.DELETE('/api/articlemanage/Ar
 export const getCategoryList = ()=> axiosService.GET('/api/articlemanage/ArticleCategoty/GetArticleCategoryList')
 
 
+//////////////////////文章Tag///////////////////////////////////////
+
+export const getAllTag = () => axiosService.GET('/api/articlemanage/ArticleTag/GetAllTagList')
+
 ////////////////////////文章管理//////////////////////////////////
 /**
  * 添加文章
@@ -26,7 +30,7 @@ export const addArticle = data => axiosService.POST('/api/articlemanage/Artilce/
 /**
  * 编辑文章
  */
-export const editArticle = data => axiosService.PUT('/api/articlemanage/Artilce/AddArticle',data)
+export const editArticle = data => axiosService.PUT('/api/articlemanage/Artilce/EditArticle',data)
 
 /**
  * 删除文章

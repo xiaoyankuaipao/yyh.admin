@@ -1,6 +1,6 @@
 //文章管理模块路由
 import categoryList from '@/apps/app/articleSystem/category/categoryList'
-import article from '@/apps/app/articleSystem/article/articleList'
+import articleList from '@/apps/app/articleSystem/article/articleList'
 
 export default [
   {
@@ -12,6 +12,7 @@ export default [
   {
     path: "/articleList",
     name:"articleList",
+    component:articleList,
     meta: ["文章管理", "文章管理"]
   }
 ];
