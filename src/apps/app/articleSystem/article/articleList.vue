@@ -35,6 +35,8 @@
                         <el-table-column type="index" width="60"></el-table-column>
                         <el-table-column prop="title" label="文章名称"></el-table-column>
                         <el-table-column prop="author" label="作者"></el-table-column>
+                        <el-table-column prop="createTime" label="创建时间"></el-table-column>
+                        
                     </template>
                 </y-table>
             </el-row>

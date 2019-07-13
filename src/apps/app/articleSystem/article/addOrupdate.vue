@@ -43,7 +43,7 @@
 
         <el-form-item label="文章内容">
             <!-- <el-input v-model="formData.content"></el-input> -->
-            <mavon-editor  @save="saveContent" @imgAdd="uploadImg" ref="md"></mavon-editor>
+            <mavon-editor v-model="formData.value"  @save="saveContent" @imgAdd="uploadImg" ref="md"></mavon-editor>
         </el-form-item>
 
         <el-form-item>
@@ -56,6 +56,7 @@
 
 <script>
 import axios from 'axios'
+import {uploadPicture} from '@/api/articleSystem.js'
 import {addArticle,editArticle,getCategoryList,getArticleById,getAllTag} from '@/api/articleSystem.js'
 export default {
     props:{
@@ -73,6 +74,7 @@ export default {
                 title:'',
                 categoryId:'',
                 content:'',
+                value:'',
                 author:''
             },
             categoryList:[],
@@ -89,25 +91,40 @@ export default {
     },
     methods: {
         saveContent(value,render){
-            // console.log(value);
-             console.log(render);
             this.formData.content=render;
+            this.formData.value=value;
         },
-        uploadImg(pos,file){
+        async uploadImg(pos,file){
             var formData=new FormData();
             formData.append('image',file);
-            axios({
-                url:'/api/articlemanage/Picture',
-                method:'post',
-                data:formData,
-                headers:{'Content-Type': 'multipart/form-data'}
-            }).then((res)=>{
-                //console.log(res)
-                var url="/api/articlemanage/src/Pictures/9e9546fb-514a-4bca-946e-33e98721dd56.jpg";
-               this.$refs.md.$img2Url(pos, url);
-            }).catch((err)=>{
-                console.log(err);
-            })
+
+            var res = await uploadPicture(formData);
+            if(res.state==1){
+                var urls=JSON.parse(res.message);
+                if(urls.length>0){
+                    var url=urls[0];
+                    console.log(url);
+                    this.$refs.md.$img2Url(pos, url);
+                }
+            }
+
+            // axios({
+            //     url:'/api/articlemanage/Picture',
+            //     method:'post',
+            //     data:formData,
+            //     // headers:{'Content-Type': 'multipart/form-data'}
+            // }).then((res)=>{
+            //     if(res.data!=null && res.data.state==1){
+            //         var urls=JSON.parse(res.data.message);
+            //         if(urls.length>0){
+            //             var url=urls[0];
+            //             console.log(url);
+            //             this.$refs.md.$img2Url(pos, url);
+            //         }
+            //     }
+            // }).catch((err)=>{
+            //     console.log(err);
+            // })
         },
 
         async onGetCategoryList(){

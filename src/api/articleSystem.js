@@ -61,3 +61,8 @@ export const getArticlePageByTag = () => axiosService.GET('/api/articlemanage/Ar
  * 根据文章Id获取文章的详细信息
  */
 export const getArticleById = data => axiosService.GET('/api/articlemanage/Artilce/GetArticleById/' + data)
+
+/**
+ * 文章编辑上传照片 
+ */
+export const uploadPicture = data => axiosService.POST('/api/articlemanage/Picture' ,data)
