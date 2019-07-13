@@ -16,6 +16,9 @@ import VueLazyLoad from 'vue-lazyload'
 
 import 'element-ui/lib/theme-chalk/index.css'
 
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+
 Vue.config.productionTip = false
 
 Vue.use(ElementUI);
@@ -31,6 +34,7 @@ Vue.use(VueLazyLoad,{
 });
 Vue.use(plugin); //注册全局组件
 Vue.use(btnhas);
+Vue.use(mavonEditor);
 
 /* eslint-disable no-new */
 new Vue({

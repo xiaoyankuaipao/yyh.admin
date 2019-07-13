@@ -1,36 +1,49 @@
 <template>
     <el-form :model="formData" ref="form" label-width="120px">
-        <el-form-item  label="文章名称" prop="title">
-            <el-input v-model="formData.title"></el-input>
-        </el-form-item>
-        <el-form-item label="文章分类" >
-            <el-select  v-model="formData.categoryId" placeholder="请选择">
-                <el-option
-                    v-for="item in categoryList"
-                    :key="item.id"
-                    :label="item.category"
-                    :value="item.id">
-                </el-option>
-            </el-select>
-        </el-form-item>
+        <el-row>
+            <el-col :span="12">
+                <el-form-item  label="文章名称" prop="title">
+                    <el-input v-model="formData.title"></el-input>
+                </el-form-item>
+            </el-col>
+            <el-col :span="12">
+                 <el-form-item label="文章分类" >
+                    <el-select  v-model="formData.categoryId" placeholder="请选择">
+                        <el-option
+                            v-for="item in categoryList"
+                            :key="item.id"
+                            :label="item.category"
+                            :value="item.id">
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+            </el-col>
+        </el-row>
+        
+        <el-row>
+            <el-col :span="12">
+                 <el-form-item label="文章作者">
+                    <el-input v-model="formData.author"></el-input>
+                </el-form-item>
+            </el-col>
+            <el-col :span="12">
+                <el-form-item label="文章标签">
+                    <el-select v-model="selectTags" multiple placeholder="请选择" :disabled="artilceId!=0">
+                        <el-option
+                            v-for="item in tagList"
+                            :key="item.id"
+                            :label="item.tag"
+                            :value="item.id">
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+            </el-col>
+        </el-row>
+
 
         <el-form-item label="文章内容">
-            <el-input v-model="formData.content"></el-input>
-        </el-form-item>
-
-        <el-form-item label="文章作者">
-            <el-input v-model="formData.author"></el-input>
-        </el-form-item>
-
-        <el-form-item label="文章标签">
-             <el-select v-model="selectTags" multiple placeholder="请选择" :disabled="artilceId!=0">
-                <el-option
-                    v-for="item in tagList"
-                    :key="item.id"
-                    :label="item.tag"
-                    :value="item.id">
-                </el-option>
-            </el-select>
+            <!-- <el-input v-model="formData.content"></el-input> -->
+            <mavon-editor  @save="saveContent" @imgAdd="uploadImg" ref="md"></mavon-editor>
         </el-form-item>
 
         <el-form-item>
@@ -42,6 +55,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import {addArticle,editArticle,getCategoryList,getArticleById,getAllTag} from '@/api/articleSystem.js'
 export default {
     props:{
@@ -74,6 +88,28 @@ export default {
         }
     },
     methods: {
+        saveContent(value,render){
+            // console.log(value);
+             console.log(render);
+            this.formData.content=render;
+        },
+        uploadImg(pos,file){
+            var formData=new FormData();
+            formData.append('image',file);
+            axios({
+                url:'/api/articlemanage/Picture',
+                method:'post',
+                data:formData,
+                headers:{'Content-Type': 'multipart/form-data'}
+            }).then((res)=>{
+                //console.log(res)
+                var url="/api/articlemanage/src/Pictures/9e9546fb-514a-4bca-946e-33e98721dd56.jpg";
+               this.$refs.md.$img2Url(pos, url);
+            }).catch((err)=>{
+                console.log(err);
+            })
+        },
+
         async onGetCategoryList(){
             let res = await getCategoryList();
             if(res.state==1){
@@ -99,7 +135,6 @@ export default {
         async onSubmit(){
             this.$refs.form.validate(async (valid)=>{
                 if(valid){
-                    
                     if(this.artilceId==0){
                         let dto={
                             articleDto:this.formData,
@@ -123,6 +158,9 @@ export default {
                         let dto={
                             articleDto:this.formData
                         }
+
+                        console.log(dto);
+
                         let res = await editArticle(dto)
                         if(res && res.state == 1){
                             this.$message({

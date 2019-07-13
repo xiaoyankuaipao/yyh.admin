@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "element-ui": "^2.9.1",
+    "mavon-editor": "^2.7.5",
     "v-img": "^0.2.0",
     "vue": "^2.5.2",
     "vue-baidu-map": "^0.21.20",

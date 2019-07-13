@@ -39,7 +39,7 @@
                 </y-table>
             </el-row>
         </el-card>
-        <el-dialog :title="dialogTitle" :visible.sync="dialogVisible" :close-on-click-modal="false" :size="dialogSize">
+        <el-dialog :title="dialogTitle" :visible.sync="dialogVisible" :close-on-click-modal="false" :size="dialogSize" :fullscreen="true">
             <!-- 渲染一个“元组件”为动态组件。依 is 的值，来决定哪个组件被渲染 -->
             <component :is="dialogType" v-if="dialogVisible" :artilceId="artilceId" @submit-complete="onCloseDialog"></component>
         </el-dialog>
