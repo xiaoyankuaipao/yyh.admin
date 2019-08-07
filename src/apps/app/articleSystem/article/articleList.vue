@@ -32,11 +32,13 @@
              <el-row>
                 <y-table ref="tableArticle" :search-api="searchApi" :params="searchParams">
                     <template  slot="columns">
-                        <el-table-column type="index" width="60"></el-table-column>
+                        <el-table-column type="index" ></el-table-column>
                         <el-table-column prop="title" label="文章名称"></el-table-column>
-                        <el-table-column prop="author" label="作者"></el-table-column>
-                        <el-table-column prop="createTime" label="创建时间"></el-table-column>
-                        
+                        <el-table-column prop="remark" label="摘要"></el-table-column>
+                        <el-table-column prop="categoryName" label="分类"></el-table-column>
+                        <el-table-column prop="readCount" label="阅读数"></el-table-column>
+                        <el-table-column prop="likeCount" label="喜欢数"></el-table-column>
+                        <el-table-column prop="createTime" label="最后更新时间"></el-table-column>
                     </template>
                 </y-table>
             </el-row>
