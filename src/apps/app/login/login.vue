@@ -69,7 +69,7 @@ export default {
             this.$refs[formName].validate(async (valid) => {
                 if(valid){
                     this.loading = true
-                    let res = await login({userName:this.loginForm.userName,password:this.loginForm.password,clientId:'SpaClient'})
+                    let res = await login({userName:this.loginForm.userName,password:this.loginForm.password,clientId:'vue-manage'})
                     if(res.state == 1 && res.token){
                         this.$message({
                             type:'success',

@@ -36,16 +36,16 @@ module.exports = {
     // cssSourceMap: true
 
     env: require('./dev.env'),
-    //host: 'localhost',
-    host:'127.0.0.1',
+    host: 'localhost',
+    //host:'127.0.0.1',
     port: 8080,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     //代理路径
     proxyTable: {
-        //'/api': { target: 'http://localhost:5000',changeOrigin: true }
-        '/api': { target: 'http://118.24.205.200:5000',changeOrigin: true }
+        '/api': { target: 'http://localhost:5000',changeOrigin: true }
+        //'/api': { target: 'http://118.24.205.200:5000',changeOrigin: true }
     },
     context: [ ],
     // CSS Sourcemaps off by default because relative paths are "buggy"
