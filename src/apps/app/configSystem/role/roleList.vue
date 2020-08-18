@@ -64,7 +64,7 @@ export default {
             this.formData={
                 name:'',
                 diaplayName:'',
-                id:0
+                id:""
             };
             this.dialogVisible=true;
         },

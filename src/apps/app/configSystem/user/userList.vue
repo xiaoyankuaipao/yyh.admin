@@ -56,7 +56,7 @@ export default {
             this.dialogType="addOrUpdate";
             this.dialogVisible=true;
             this.formData={
-                id:0,
+                id:"",
                 userName:'',
                 realName:'',
                 password:'',

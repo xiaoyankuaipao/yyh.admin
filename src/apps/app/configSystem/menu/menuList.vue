@@ -101,7 +101,7 @@ export default {
     },
     onCreate() {
       this.selectInfo = {
-        id: 0,
+        id: "",
         parentId: "",
         name: "",
         icon: "",
