@@ -53,8 +53,8 @@ export default {
             this.dialogType="addOrupdate",
             this.dialogSize="small",
             this.formData={
-                category:'',
-                id:0
+                category:"",
+                id:""
             };
             this.dialogVisible=true;
         },

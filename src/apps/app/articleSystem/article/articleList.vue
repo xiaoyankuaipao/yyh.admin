@@ -67,7 +67,7 @@ export default {
             dialogType:'addOrupdate',
             dialogSize:'small',
             searchParams:{
-                categoryId:0
+                categoryId:""
             },
             categoryList:[],
             selectCategoryId:'',

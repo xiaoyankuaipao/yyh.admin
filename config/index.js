@@ -44,8 +44,8 @@ module.exports = {
     assetsPublicPath: '/',
     //代理路径
     proxyTable: {
-        '/api': { target: 'http://localhost:5000',changeOrigin: true }
-        //'/api': { target: 'http://118.24.205.200:5000',changeOrigin: true }
+        //'/api': { target: 'http://localhost:5000',changeOrigin: true }
+        '/api': { target: 'http://118.24.205.200:5000',changeOrigin: true }
     },
     context: [ ],
     // CSS Sourcemaps off by default because relative paths are "buggy"

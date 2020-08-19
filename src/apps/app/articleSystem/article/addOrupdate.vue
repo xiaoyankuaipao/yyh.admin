@@ -61,16 +61,16 @@ import {addArticle,editArticle,getCategoryList,getArticleById,getAllTag} from '@
 export default {
     props:{
         artilceId:{
-            type:Number,
+            type:String,
             default(){
-                return 0
+                return ""
             }
         }
     },
     data(){
         return {
             formData:{
-                id:0,
+                id:"",
                 title:'',
                 categoryId:'',
                 content:'',
@@ -152,7 +152,7 @@ export default {
         async onSubmit(){
             this.$refs.form.validate(async (valid)=>{
                 if(valid){
-                    if(this.artilceId==0){
+                    if(this.artilceId==""){
                         let dto={
                             articleDto:this.formData,
                             tagIds:this.selectTags
